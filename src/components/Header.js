@@ -62,6 +62,8 @@ const HeaderItem = styled.div`
   }
 `;
 const Profile = styled.div`
+  display: flex;
+  align-item: center;
   img {
     height: 30px;
     border-radius: 50%;
