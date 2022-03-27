@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from "styled-components";
 
-const TodoItem = () => {
+const TodoItem = ({todo}) => {
   return <TodoListItem>
     <Checkbox className = 'far fa-circle' />
-    <input style={{textdecoration: ''}}/>
+    <input style={{textdecoration: ''}} value={todo}/>
+
     <SaveTodo className='fas fa-check' />
     <DeleteTodo className='fas fa-trash-alt'/>
   </TodoListItem> 
