@@ -1,17 +1,20 @@
 import "./App.css";
 import { useState } from "react";
 import Header from "./components/Header";
+import TodoItem from "./components/TodoItem";
 import styled from "styled-components";
+
 function App() {
   return (
     <Wrapper>
       <Header />
       <Main>
-        <MainContent style={{width: '100vw'}}>
+        <MainContent style={{ width: '100vw' }}>
           <TodoContent>
             <Title>Dashboard</Title>
             <Greeting>Good morning, Yi-Chien</Greeting>
             {[<h2>Cooking</h2>, <h2>Gym</h2>]}
+            <TodoItem/>
           </TodoContent>
         </MainContent>
       </Main>
@@ -46,7 +49,7 @@ const TodoContent = styled.div`
 const Title = styled.div`
   margin: 50px 0;
   font-size: 36px;
-  font-weight: 800;
+  font-weight: 500;
 `;
 
 const Greeting = styled.div`
