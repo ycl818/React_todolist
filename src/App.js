@@ -3,6 +3,7 @@ import { useState } from "react";
 import Header from "./components/Header";
 import TodoItem from "./components/TodoItem";
 import styled from "styled-components";
+import TodoList from "./components/TodoList";
 
 function App() {
   return (
@@ -13,8 +14,7 @@ function App() {
           <TodoContent>
             <Title>Dashboard</Title>
             <Greeting>Good morning, Yi-Chien</Greeting>
-            {[<h2>Cooking</h2>, <h2>Gym</h2>]}
-            <TodoItem/>
+           <TodoList/>
           </TodoContent>
         </MainContent>
       </Main>
