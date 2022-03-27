@@ -18,15 +18,22 @@ const TodoItem = ({todo, todos, setTodos}) => {
 
     const saveTodo = () => {
         const currentTodoId = todo.id
-        setTodos(todos.map(todo => todo.id === currentTodoId ? {...todo, title: editTodo} : todo))
+        setTodos(todos.map(todo => todo.id === currentTodoId ? { ...todo, title: editTodo} : todo))
     }
-  return <TodoListItem>
-    <Checkbox className = 'far fa-circle' />
-    <input style={{textdecoration: ''}} value={editTodo} onChange={ e => setEditedTodo(e.target.value) }/>
+
+    const completeTodo = () => {
+        const currentTodoId = todo.id;
+        setTodos(todos.map(todo => todo.id == currentTodoId ? { ...todo, completed:!todo.completed } : todo))
+    }
+
+  return (
+  <TodoListItem>
+    <Checkbox className={todo.completed ? 'fas fa-check-circle' : 'far fa-circle' } onClick={completeTodo} />
+    <input style={{textDecoration: todo.completed ? 'line-through' : 'none' }} value={editTodo} onChange={ e => setEditedTodo(e.target.value) }/>
 
     <SaveTodo className='fas fa-check' onClick={saveTodo} />
     <DeleteTodo className='fas fa-trash-alt' onClick={deleteTask}/>
-  </TodoListItem> 
+  </TodoListItem> )
 }
 
 export default TodoItem
