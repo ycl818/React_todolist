@@ -9,13 +9,15 @@ const TodoList = () => {
     const addButtonHandler = () => {
         console.log('addbutton')
         console.log(todo)
-        setTodos([{
-            id: todos.length,
-            title: todo,
-            completed: false,
-        }, ...todos])
-        console.log(todos)
-        setTodo('')
+        if (todo.length > 0) {
+            setTodos([{
+                id: todos.length,
+                title: todo,
+                completed: false,
+            }, ...todos])
+            console.log(todos)
+            setTodo('')
+        }
     }
   return (
   <Wrapper>
