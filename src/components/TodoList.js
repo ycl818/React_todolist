@@ -9,7 +9,11 @@ const TodoList = () => {
     const addButtonHandler = () => {
         console.log('addbutton')
         console.log(todo)
-        setTodos([todo, ...todos])
+        setTodos([{
+            id: todos.length,
+            title: todo,
+            completed: false,
+        }, ...todos])
         console.log(todos)
         setTodo('')
     }
@@ -24,7 +28,7 @@ const TodoList = () => {
           <AddTodo className='fas fa-plus' onClick={addButtonHandler}/>
       </TodoCategoryHeader>
       {todos.map((todo, index) => (
-          <TodoItem key={index} todo={todo} />
+          <TodoItem key={index} todo={todo} todos={todos} setTodos={setTodos} />
       ))}
   </Wrapper>
  
