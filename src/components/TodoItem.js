@@ -31,7 +31,7 @@ const TodoItem = ({todo, todos, setTodos}) => {
     <Checkbox className={todo.completed ? 'fas fa-check-circle' : 'far fa-circle' } onClick={completeTodo} />
     <input style={{textDecoration: todo.completed ? 'line-through' : 'none' }} value={editTodo} onChange={ e => setEditedTodo(e.target.value) }/>
 
-    <SaveTodo className='fas fa-check' onClick={saveTodo} />
+    {todo.title !== editTodo && <SaveTodo className='fas fa-check' onClick={saveTodo} />} 
     <DeleteTodo className='fas fa-trash-alt' onClick={deleteTask}/>
   </TodoListItem> )
 }
