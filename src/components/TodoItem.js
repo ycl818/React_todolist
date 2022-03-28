@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from "styled-components";
 
-const TodoItem = ({todo, todos, setTodos, color}) => {
+const TodoItem = ({todo, color, baseURL, title, getTodos}) => {
 
     const [editTodo, setEditedTodo] = useState(todo.fields.title)  
 
@@ -10,20 +10,49 @@ const TodoItem = ({todo, todos, setTodos, color}) => {
     }, [todo])
 
     const deleteTask = () => {
-        console.log(todo.id, todo.title)
-        const currentTodo = todo.id
-        setTodos(todos.filter(todo => todo.id !== currentTodo))
-        console.log(todos)
+      
     }
 
-    const saveTodo = () => {
-        const currentTodoId = todo.id
-        setTodos(todos.map(todo => todo.id === currentTodoId ? { ...todo, title: editTodo} : todo))
+    const saveTodo = async () => {
+       try {
+        await fetch(`${baseURL}/${todo.id}`, {
+            method: 'put',
+            headers: {
+                Authorization: "Bearer keyP4DkwUTgpXYFRr" ,
+                'Content-Type' : "application/json",
+            },
+            body: JSON.stringify({
+                fields: {
+                    title: editTodo,
+                    completed: todo.fields.completed,
+                },
+            }),
+        })
+        getTodos()
+       } catch (error){
+           console.log(error)
+       }
     }
 
-    const completeTodo = () => {
-        const currentTodoId = todo.id;
-        setTodos(todos.map(todo => todo.id == currentTodoId ? { ...todo, completed:!todo.completed } : todo))
+    const completeTodo =  async() => {
+        try {
+            await fetch(`${baseURL}/${todo.id}`, {
+                method: 'put',
+                headers: {
+                    Authorization: "Bearer keyP4DkwUTgpXYFRr" ,
+                    'Content-Type' : "application/json",
+                },
+                body: JSON.stringify({
+                    fields: {
+                        title: editTodo,
+                        completed: !todo.fields.completed,
+                    },
+                }),
+            })
+            getTodos()
+           } catch (error){
+               console.log(error)
+           }
     }
 
   return (

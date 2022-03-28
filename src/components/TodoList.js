@@ -64,7 +64,14 @@ const TodoList = ({title, color, icon}) => {
           <AddTodo className='fas fa-plus' onClick={addButtonHandler}/>
       </TodoCategoryHeader>
       {todos.map((todo, index) => (
-          <TodoItem key={index} todo={todo} todos={todos} setTodos={setTodos} color={color} />
+          <TodoItem 
+          key={index} 
+          todo={todo} 
+          baseURL={baseURL} 
+          title={title} 
+          color={color}
+          getTodos={getTodos}
+          />
       ))}
   </Wrapper>
  
