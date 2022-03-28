@@ -1,10 +1,33 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import TodoItem from './TodoItem'
 import styled from 'styled-components'
 
 const TodoList = ({title, color, icon}) => {
     const [todo, setTodo] = useState('')
     const [todos, setTodos] = useState([])
+
+    const baseURL = `https://api.airtable.com/v0/appz65jPPawfuLwQ1/${title}`
+    const getTodos = async () => {
+        try {
+            const todoData = await fetch(baseURL, {
+                method: 'GET',
+                headers: {
+                    Authorization: 'Bearer keyP4DkwUTgpXYFRr'
+                },
+            })
+
+            const todoJson = await todoData.json()
+            setTodos(todoJson.records)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    console.log(todos)
+
+    useEffect(() => {
+        getTodos()
+    },[todo])
 
     const addButtonHandler = () => {
         console.log('addbutton')

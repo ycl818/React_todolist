@@ -3,10 +3,10 @@ import styled from "styled-components";
 
 const TodoItem = ({todo, todos, setTodos, color}) => {
 
-    const [editTodo, setEditedTodo] = useState(todo.title)  
+    const [editTodo, setEditedTodo] = useState(todo.fields.title)  
 
     useEffect(() => {
-        setEditedTodo(todo.title)
+        setEditedTodo(todo.fields.title)
     }, [todo])
 
     const deleteTask = () => {
@@ -28,10 +28,10 @@ const TodoItem = ({todo, todos, setTodos, color}) => {
 
   return (
   <TodoListItem>
-    <Checkbox className={todo.completed ? 'fas fa-check-circle' : 'far fa-circle' } onClick={completeTodo} style={{color: color}} />
-    <input style={{textDecoration: todo.completed ? 'line-through' : 'none' }} value={editTodo} onChange={ e => setEditedTodo(e.target.value) }/>
+    <Checkbox className={todo.fields.completed ? 'fas fa-check-circle' : 'far fa-circle' } onClick={completeTodo} style={{color: color}} />
+    <input style={{textDecoration: todo.fields.completed ? 'line-through' : 'none' }} value={editTodo} onChange={ e => setEditedTodo(e.target.value) }/>
 
-    {todo.title !== editTodo && <SaveTodo className='fas fa-check' onClick={saveTodo} />} 
+    {todo.fields.title !== editTodo && <SaveTodo className='fas fa-check' onClick={saveTodo} />} 
     <DeleteTodo className='fas fa-trash-alt' onClick={deleteTask}/>
   </TodoListItem> )
 }

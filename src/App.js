@@ -11,7 +11,7 @@ function App() {
 
   const todoList = [
   {
-    title: 'Prersonal',
+    title: 'Personal',
     color: '#fd76a1',
     icon:'fas fa-user',
   },
