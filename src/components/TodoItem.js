@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from "styled-components";
 
-const TodoItem = ({todo, todos, setTodos}) => {
+const TodoItem = ({todo, todos, setTodos, color}) => {
 
     const [editTodo, setEditedTodo] = useState(todo.title)  
 
@@ -28,7 +28,7 @@ const TodoItem = ({todo, todos, setTodos}) => {
 
   return (
   <TodoListItem>
-    <Checkbox className={todo.completed ? 'fas fa-check-circle' : 'far fa-circle' } onClick={completeTodo} />
+    <Checkbox className={todo.completed ? 'fas fa-check-circle' : 'far fa-circle' } onClick={completeTodo} style={{color: color}} />
     <input style={{textDecoration: todo.completed ? 'line-through' : 'none' }} value={editTodo} onChange={ e => setEditedTodo(e.target.value) }/>
 
     {todo.title !== editTodo && <SaveTodo className='fas fa-check' onClick={saveTodo} />} 

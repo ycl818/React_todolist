@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-const Header = () => {
+const Header = ({ sideBarToggle, setSideBarToggle }) => {
   return (
     <Wrapper>
-      <HeaderItem>
+      <HeaderItem onClick={() => setSideBarToggle(!sideBarToggle)}>
         <i className="fas fa-bars" />
       </HeaderItem>
 
@@ -47,7 +47,7 @@ const Wrapper = styled.div`
 `;
 const HeaderItem = styled.div`
   color: #eee;
-  padding: 10px 16px;
+  padding: 10px 24px;
   border-radius: 4px;
 
   span {

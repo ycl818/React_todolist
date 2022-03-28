@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from "styled-components";
 
-const Sidebar = ({sidebarToggle, todoList}) => {
+const Sidebar = ({sideBarToggle, todoList}) => {
   return (
-   <Wrapper style={{width: `${sidebarToggle ? '300px' : '70px'}`}} >
-       <Title>{sidebarToggle ? 'Collections' : ''}</Title>
+   <Wrapper style={{width: `${sideBarToggle ? '300px' : '70px'}`}} >
+       <Title>{sideBarToggle ? 'Collections' : ''}</Title>
 
        <CategoryList>
            {
@@ -13,7 +13,7 @@ const Sidebar = ({sidebarToggle, todoList}) => {
                        <CategoryIcon style={{backgroundColor : category.color}}>
                         <i className={category.icon} />
                        </CategoryIcon>
-                       {sidebarToggle && <span>{category.title}</span>}
+                       {sideBarToggle && <span>{category.title}</span>}
                    </Category>
                ))
            }
@@ -27,11 +27,42 @@ export default Sidebar
 const Wrapper = styled.div`
     height: calc(100vh - 70px);
     background-color: #20212d;
+    padding-left: 35px;
 `
-const Title = styled.div``
+const Title = styled.div`
+    font-size: 30px;
+    font-weight: 700;
+    padding: 50px 0;
+`
 
-const CategoryList = styled.div``
+const CategoryList = styled.div`
+    margin-top: -16px;
+`
 
-const Category = styled.div``
+const Category = styled.div`
+    display: flex;
+    align-item: center;
+    margin: 4px -16px;
+    padding: 10px 16px;
+    border-radius: 4px;
+    width: calc(100% - 32px);
 
-const CategoryIcon = styled.div``
+    span {
+        margin-left: 10px;
+        font-weight: 500;
+        font-size: 18px;
+    }
+
+    &:hover {
+        background-color: #18181f;
+        cursor: pointer;
+    }
+`
+
+const CategoryIcon = styled.div`
+    height: 30px;
+    width: 30px;
+    border-radius: 4px;
+    display: grid;
+    place-items: center;
+`

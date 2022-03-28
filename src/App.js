@@ -7,7 +7,7 @@ import TodoList from "./components/TodoList";
 import Sidebar from "./components/Sidebar";
 
 function App() {
-  const [sidebarToggle, setsidebarToggle] = useState(true)
+  const [sideBarToggle, setSideBarToggle] = useState(false)
 
   const todoList = [
   {
@@ -28,14 +28,21 @@ function App() {
 ]
   return (
     <Wrapper>
-      <Header />
+      <Header sideBarToggle={sideBarToggle} setSideBarToggle={setSideBarToggle}/>
       <Main>
-        <Sidebar sidebarToggle={sidebarToggle} todoList={todoList}/>
-        <MainContent style={{ width: `calc(100vw - (${sidebarToggle ? '300ox' : '70px' }))` }}>
+        <Sidebar sideBarToggle={sideBarToggle} todoList={todoList}/>
+        <MainContent style={{ width: `calc(100vw - (${sideBarToggle ? '300ox' : '70px' }))` }}>
           <TodoContent>
             <Title>Dashboard</Title>
             <Greeting>Good morning, Yi-Chien</Greeting>
-           <TodoList/>
+            {todoList.map(category => (
+              <TodoList 
+                key = {category.title}
+                title = {category.title}
+                color = {category.color}
+                icon = {category.icon}
+              />
+            ))}
           </TodoContent>
         </MainContent>
       </Main>
