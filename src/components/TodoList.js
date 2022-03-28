@@ -29,17 +29,28 @@ const TodoList = ({title, color, icon}) => {
         getTodos()
     },[todo])
 
-    const addButtonHandler = () => {
-        console.log('addbutton')
-        console.log(todo)
-        if (todo.length > 0) {
-            setTodos([{
-                id: todos.length,
-                title: todo,
-                completed: false,
-            }, ...todos])
-            console.log(todos)
+    const addButtonHandler = async () => {
+        try {
+            await fetch (baseURL, {
+                method: 'post',
+                headers:{
+                    Authorization: "Bearer keyP4DkwUTgpXYFRr" ,
+                    'Content-Type' : "application/json",
+                },
+                body : JSON.stringify({
+                    "records": [
+                        {
+                          "fields": {
+                            "title": todo,
+                            "completed": false
+                          }
+                        },
+                      ]
+                })
+            })
             setTodo('')
+        } catch (error) {
+            console.log(error)
         }
     }
   return (
