@@ -4,13 +4,34 @@ import Header from "./components/Header";
 import TodoItem from "./components/TodoItem";
 import styled from "styled-components";
 import TodoList from "./components/TodoList";
+import Sidebar from "./components/Sidebar";
 
 function App() {
+  const [sidebarToggle, setsidebarToggle] = useState(true)
+
+  const todoList = [
+  {
+    title: 'Prersonal',
+    color: '#fd76a1',
+    icon:'fas fa-user',
+  },
+  {
+    title: 'Work',
+    color: '#70c4be',
+    icon:'fas fa-briefcase',
+  },
+  {
+    title: 'Free',
+    color: '#ab6ddf',
+    icon:'fas fa-file-code',
+  },
+]
   return (
     <Wrapper>
       <Header />
       <Main>
-        <MainContent style={{ width: '100vw' }}>
+        <Sidebar sidebarToggle={sidebarToggle} todoList={todoList}/>
+        <MainContent style={{ width: `calc(100vw - (${sidebarToggle ? '300ox' : '70px' }))` }}>
           <TodoContent>
             <Title>Dashboard</Title>
             <Greeting>Good morning, Yi-Chien</Greeting>
