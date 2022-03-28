@@ -9,8 +9,18 @@ const TodoItem = ({todo, color, baseURL, title, getTodos}) => {
         setEditedTodo(todo.fields.title)
     }, [todo])
 
-    const deleteTask = () => {
-      
+    const deleteTask = async() => {
+      try {
+        await fetch(`${baseURL}/${todo.id}`, {
+            method: 'delete',
+            headers: {
+                Authorization: "Bearer keyP4DkwUTgpXYFRr"
+            },
+        })
+        getTodos()
+      } catch (error) {
+          console.log(error)
+      }
     }
 
     const saveTodo = async () => {
