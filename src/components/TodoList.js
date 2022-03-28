@@ -7,6 +7,7 @@ const TodoList = ({title, color, icon}) => {
     const [todos, setTodos] = useState([])
 
     const baseURL = `https://api.airtable.com/v0/appz65jPPawfuLwQ1/${title}`
+   
     const getTodos = async () => {
         try {
             const todoData = await fetch(baseURL, {

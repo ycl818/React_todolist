@@ -7,6 +7,7 @@ import TodoList from "./components/TodoList";
 import Sidebar from "./components/Sidebar";
 
 function App() {
+  
   const [sideBarToggle, setSideBarToggle] = useState(false)
 
   const todoList = [
